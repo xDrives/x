@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Download My App</title>
+  <title>Downloads</title>
   <style>
     * { box-sizing: border-box; }
     body {
@@ -12,78 +12,151 @@
       display: grid;
       place-items: center;
       padding: 24px;
-      background: #0b0e14;
+      background:
+        radial-gradient(900px 500px at 50% -15%, #1b2745, transparent),
+        #0b0e14;
       color: #e7ecf5;
       font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
+
     .card {
       width: 100%;
-      max-width: 420px;
-      background: #111725;
+      max-width: 480px;
+      background: linear-gradient(180deg, #111725, #0e1420);
       border: 1px solid #232c42;
-      border-radius: 20px;
-      padding: 36px 26px;
-      text-align: center;
+      border-radius: 22px;
+      padding: 34px 26px 26px;
       box-shadow: 0 24px 60px -20px rgba(0,0,0,.8);
+      text-align: center;
     }
+
     h1 {
-      margin: 0 0 8px;
-      font-size: 28px;
+      margin: 0 0 6px;
+      font-size: clamp(24px, 6vw, 28px);
       letter-spacing: -.02em;
     }
-    p {
+    .sub {
       margin: 0 0 26px;
       color: #8b97ad;
-      font-size: 15px;
-      line-height: 1.55;
+      font-size: 14.5px;
+      line-height: 1.5;
     }
-    .btn {
+
+    .app {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border-radius: 14px;
+      background: #161d2f;
+      border: 1px solid #232c42;
+      text-align: left;
+      transition: border-color .18s, background .18s, transform .12s;
+    }
+    .app + .app { margin-top: 12px; }
+    .app:hover {
+      border-color: #3a4a6e;
+      background: #1a2237;
+      transform: translateY(-1px);
+    }
+
+    .app-icon {
+      flex: 0 0 auto;
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      color: #fff;
+    }
+    .xdrive  .app-icon { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+    .messages .app-icon { background: linear-gradient(135deg, #22c55e, #15803d); }
+
+    .app-info {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .app-name {
+      font-weight: 700;
+      font-size: 15.5px;
+      margin-bottom: 2px;
+    }
+    .app-desc {
+      font-size: 12.5px;
+      color: #8b97ad;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .app-btn {
+      flex: 0 0 auto;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 15px 20px;
-      border-radius: 12px;
+      gap: 6px;
+      padding: 10px 14px;
+      border-radius: 10px;
       background: #5b8cff;
       color: #0b0e14;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 13.5px;
       text-decoration: none;
-      transition: transform .12s, background .18s;
+      transition: background .18s, transform .12s;
     }
-    .btn:hover {
-      background: #7aa2ff;
-      transform: translateY(-1px);
+    .app-btn:hover { background: #7aa2ff; }
+    .app-btn:active { transform: scale(.97); }
+    .app-btn svg {
+      width: 15px;
+      height: 15px;
     }
-    .btn:active {
-      transform: translateY(0);
-    }
-    .btn svg {
-      width: 20px;
-      height: 20px;
-    }
+
     .note {
-      margin-top: 16px;
+      margin: 22px 0 0;
       font-size: 12.5px;
-      color: #8b97ad;
+      color: #6b7688;
     }
   </style>
 </head>
 <body>
   <main class="card">
-    <h1>My App</h1>
-    <p>Download the latest Android APK directly to your phone.</p>
+    <h1>My Apps</h1>
+    <p class="sub">Choose an app to download the latest APK.</p>
 
-    <!-- This links to apps.apk in the SAME directory -->
-    <a class="btn" href="xdrive.apk" download="xdrive.apk" type="application/vnd.android.package-archive">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3v12"/>
-        <path d="m7 10 5 5 5-5"/>
-        <path d="M4 19h16"/>
-      </svg>
-      Download APK
-    </a>
+    <!-- App 1: XDrive -->
+    <div class="app xdrive">
+      <div class="app-icon">☁</div>
+      <div class="app-info">
+        <div class="app-name">XDrive</div>
+        <div class="app-desc">Cloud storage &amp; file manager</div>
+      </div>
+      <a class="app-btn" href="xdrive.apk" download="xdrive.apk"
+         type="application/vnd.android.package-archive">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/>
+        </svg>
+        APK
+      </a>
+    </div>
+
+    <!-- App 2: Messages -->
+    <div class="app messages">
+      <div class="app-icon">💬</div>
+      <div class="app-info">
+        <div class="app-name">Messages</div>
+        <div class="app-desc">SMS &amp; chat messenger</div>
+      </div>
+      <a class="app-btn" href="messages.apk" download="messages.apk"
+         type="application/vnd.android.package-archive">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M4 19h16"/>
+        </svg>
+        APK
+      </a>
+    </div>
 
     <p class="note">Android 8+ · Direct download</p>
   </main>
